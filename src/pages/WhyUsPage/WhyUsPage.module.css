@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;800&family=Roboto:wght@100;300;400;500;700;900&family=Tinos:wght@400;700&display=swap');
+:root{
+  --green:#63cae1;
+  --black:#444;
+  --light-color:#777;
+  --bg-color:#e6e6e6;
+  --border: 1rem solid rgba(0,0,0,.2);
+  --box-shadow: .4rem .4rem 1rem #ccc,
+                -.4rem -.4rem 1rem #fff;
+  --box-shadow-inset: .4rem .4rem 1rem #ccc inset,
+                -.4rem -.4rem 1rem #fff inset;
+}
+
+
+
+@media screen and (max-width: 700px){
+  .section__padding{
+      padding: 4rem;
+  }
+  .section__margin{
+      margin: 4rem;
+  }
+}
+@media screen and (max-width: 550px){
+  .section__padding{
+      padding: 4rem 2rem;
+  }
+  .section__margin{
+      margin: 4rem 2rem;
+  }
+}
+
+@media screen and (max-width:991px) {
+    html{
+      font-size: 55%;
+    }
+    body{
+      padding-left: 0;
+    }
+}
+@media screen and (max-width:450px) {
+  html{
+    font-size: 50%;
+  }
+}
+
+.cryptoServices{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 90vh;
+  margin-bottom: 50px;
+}
+.cryptoServicesHeading{
+  font-size: 3rem;
+  color: var(--green);
+  margin: 4rem 0;
+}
+
+.cryptoServicesBoxContainer{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(40rem,1fr, 1fr));
+  gap: 2rem;
+  width: 80%;
+}
+.cryptoServicesBox{
+  padding: 2rem;
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+.cryptoServicesBoxIcon{
+  font-size: 4rem;
+  padding-bottom: 5rem;
+  color: var(--black);
+}
+.cryptoServicesBox h3{
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  color: var(--black);
+}
+.cryptoServicesBox p{
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--light-color);
+}
+.cryptoServicesBox::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--green);
+  box-shadow: var(--box-shadow);
+  z-index: -1;
+  clip-path: circle(6rem at 5% 0%);
+  transition: .3s linear;
+}
+
+
+
+@media screen and (max-width: 720px){
+  .cryptoServicesBoxContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+  }
+}

@@ -1,0 +1,32 @@
+.Heading{
+    font-size: 40px;
+    color: #747474;
+}
+.edit{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin-top: 50px;
+}
+.InputForm{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px 80px;
+}
+.formInput{
+    display: flex;
+    flex-direction: column;
+}
+.editbtn{
+    background-color: #aaaaaa;
+    padding: 5px 20px;
+    border-radius: 5px;
+    margin-top: 10px; 
+}
+.UpdateUserDataBtn{
+    background-color: #63cae1;
+    padding: 5px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
