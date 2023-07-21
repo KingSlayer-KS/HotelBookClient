@@ -34,7 +34,7 @@ function BadgeCard({
   location,
   type,
 }) {
-  const { classes, theme } = useStyles();
+  const { classes } = useStyles();
 
   return (
     <>
@@ -59,7 +59,7 @@ function BadgeCard({
 
             <Badge size="sm">{amenities}</Badge>
           </Group>
-          <div style={{height:"11rem"}}>
+          <div style={{ height: "11rem" }}>
             <Text fz="sm" m="xs">
               {description}
             </Text>

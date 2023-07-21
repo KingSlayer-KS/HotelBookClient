@@ -1,12 +1,11 @@
 import "./HotelByRegion.css";
 import { useNavigate } from "react-router-dom";
-import useFetch from "../../hooks/usefetch";
 
 const HotelByRegion = (props) => {
 const AllRegion = [...new Set(props.data.map(item => item.Region))]; 
 const propertyCount =  AllRegion.map((Region)=>{
     const CountProperties =  props.data.filter((e)=>{
-      return e.Region == Region;
+      return e.Region === Region;
      })
      return CountProperties.length;
   })

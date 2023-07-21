@@ -13,7 +13,6 @@ import Register from "../src/pages/Register/Register";
 import NavBar from "../src/components/NewNav/NavBar";
 
 // Data Fetching 
-import useFetch from "./hooks/usefetch";
 import { useContext } from "react";
 import { AuthContext } from "./Context/AuthContext";
 

@@ -94,39 +94,51 @@ export default function HeroImageRight() {
       <Container size="lg">
         <div className={classes.inner}>
           <div className={classes.content}>
-            {user?<Title className={classes.title}>Welcome, <Text c="teal.4">{user.Name}</Text></Title>:<><Title className={classes.title}>Want to Travel the World?</Title>
+            {user ? (
+              <Title className={classes.title}>
+                Welcome, <Text c="teal.4">{user.Name}</Text>
+              </Title>
+            ) : (
+              <>
+                <Title className={classes.title}>
+                  Want to Travel the World?
+                </Title>
 
-            <Title className={classes.description} mt={30}>
-              <Text
-                component="span"
-                inherit
-                variant="gradient"
-                gradient={{ from: "#EE2B77", to: "#64CAE1" }}
-              >
-                Become A member
-              </Text>
-            </Title></>
-}
-            {user?<Link to="/userDashboard">
-              <Button
-                variant="default"
-                size="xl"
-                className={classes.control}
-                mt={40}
-              >
-                Dashboard
-              </Button>
-            </Link>
-            :<Link to="/register">
-              <Button
-                variant="default"
-                size="xl"
-                className={classes.control}
-                mt={40}
-              >
-                Register
-              </Button>
-            </Link>}
+                <Title className={classes.description} mt={30}>
+                  <Text
+                    component="span"
+                    inherit
+                    variant="gradient"
+                    gradient={{ from: "#EE2B77", to: "#64CAE1" }}
+                  >
+                    Become A member
+                  </Text>
+                </Title>
+              </>
+            )}
+            {user ? (
+              <Link to="/userDashboard">
+                <Button
+                  variant="default"
+                  size="xl"
+                  className={classes.control}
+                  mt={40}
+                >
+                  Dashboard
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/register">
+                <Button
+                  variant="default"
+                  size="xl"
+                  className={classes.control}
+                  mt={40}
+                >
+                  Register
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </Container>

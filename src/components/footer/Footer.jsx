@@ -1,10 +1,7 @@
 import { createStyles, Image } from "@mantine/core";
 
-import { Text, Container, ActionIcon, Group, rem } from "@mantine/core";
+import { Text, Container, Group, rem } from "@mantine/core";
 import {
-  IconBrandTwitter,
-  IconBrandYoutube,
-  IconBrandInstagram,
   IconMapPin,
   IconPhone,
   IconBrandGmail
@@ -203,7 +200,7 @@ function FooterLinks() {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-        <img src={logo} style={{height:"4.5rem"}}/>
+        <img src={logo} style={{height:"4.5rem"}} alt="Logo" />
           <Text size="xs" color="dimmed" className={classes.description}>
           The world is changing all around us. To continue to thrive as a business over the next ten years and beyond, we must look ahead, understand the trends and forces that will shape our business in the future and move swiftly to prepare for what's to come.          </Text>
         </div>

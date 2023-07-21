@@ -1,5 +1,5 @@
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button, Group } from '@mantine/core';
+import { Modal } from '@mantine/core';
 
 function Demo(props) {
   const [opened, { open, close }] = useDisclosure(false);

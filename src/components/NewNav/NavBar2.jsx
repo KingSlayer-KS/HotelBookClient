@@ -9,12 +9,12 @@ import {
   Drawer,
   rem,
 } from "@mantine/core";
-import UserMenu from "./UserMenu"
+import UserMenu from "./UserMenu";
 import logo from "../../pages/Assets/Logo.jpg";
 import { useDisclosure } from "@mantine/hooks";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
-import {useContext} from "react"
+import { useContext } from "react";
 const useStyles = createStyles((theme) => ({
   link: {
     display: "flex",
@@ -72,7 +72,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   hiddenMobile: {
-    backgroundColor:"63CAE1",
+    backgroundColor: "63CAE1",
     [theme.fn.smallerThan("sm")]: {
       display: "none",
     },
@@ -87,7 +87,6 @@ const useStyles = createStyles((theme) => ({
 
 export function HeaderMegaMenu() {
   const { user } = useContext(AuthContext);
-  // const  user  = true;
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const { classes, theme } = useStyles();
@@ -96,8 +95,9 @@ export function HeaderMegaMenu() {
     <Box>
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
-    
-          <img src={logo} style={{ width: "6rem" }}></img>
+          <Link to="/">
+            <img src={logo} style={{ width: "6rem" }} alt="Logo"/>
+          </Link>
           <Group
             sx={{ height: "100%" }}
             spacing={0}
@@ -117,10 +117,13 @@ export function HeaderMegaMenu() {
             </Link>
           </Group>
           <Group className={classes.hiddenMobile}>
-          {user? <UserMenu/>:<Link to="login">
-            <Button variant="default">Log in</Button>
-          </Link>}
-        
+            {user ? (
+              <UserMenu />
+            ) : (
+              <Link to="login">
+                <Button variant="default">Log in</Button>
+              </Link>
+            )}
           </Group>
 
           <Burger
@@ -138,7 +141,6 @@ export function HeaderMegaMenu() {
         title="Navigation"
         className={classes.hiddenDesktop}
       >
-      
         <Divider
           my="sm"
           color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
@@ -155,16 +157,15 @@ export function HeaderMegaMenu() {
         <Link to="/WhyUs">
           <span className={classes.link}>Why Us?</span>
         </Link>
-        <Divider
-          my="sm"
-          color= "gray.1"
-        />
+        <Divider my="sm" color="gray.1" />
         <Group position="center" grow pb="xl" px="md">
-        {user? <UserMenu/>:<Link to="login">
-            <Button variant="default">Log in</Button>
-          </Link>}
-        
-
+          {user ? (
+            <UserMenu />
+          ) : (
+            <Link to="login">
+              <Button variant="default">Log in</Button>
+            </Link>
+          )}
         </Group>
       </Drawer>
     </Box>
