@@ -7,9 +7,7 @@ import {
   PasswordInput,
   Text,
   Paper,
-  Group,
   Button,
-  Stack,
   Container,
 } from '@mantine/core';
 import { Height } from '@mui/icons-material';
@@ -34,6 +32,7 @@ const UserForm = () => {
     try {
     const res = await axios.post(`http://54.234.178.57:8800/api/auth/register`,NewUser, {withCredentials: true});
     setMessage(res.data.Message);
+    {res.status==200&&navigate("/login")}
 
      } catch (error){
 

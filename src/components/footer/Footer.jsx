@@ -114,11 +114,11 @@ const Links = [
     title: "Links",
     links: [
       {
-        link: <IconMapPin size="2.5rem" />,
+        link: <IconMapPin size="3.5rem" />,
         label: "C916, 3rd floor sector-7 Dwarka Near Ramphal chowk, New Delhi-110075(Office close shifted in mumbai)",
       },
       {
-        link: <IconMapPin size="2.5rem" />,
+        link: <IconMapPin size="3.5rem" />,
         label: "New Office : Shop No 64, level 2 floor, Dewan Center S. V AXIS BANK road, Jogeshwar west mumbai maharashtra 400102",
       },
       {
@@ -126,11 +126,11 @@ const Links = [
         label: "1800 419 9637",
       },
       {
-        link: <IconBrandGmail size="2.5rem" />,
+        link: <IconBrandGmail size="3.5rem" />,
         label: "info@indventureholidays.in",
       },
       {
-        link: <IconBrandGmail size="2.5rem" />,
+        link: <IconBrandGmail size="3.5rem" />,
         label: "reservation@indventureholidays.in",
       },
     ],
@@ -186,8 +186,9 @@ function FooterLinks() {
   const groupsi = Links?.map((group) => {
     const links = group.links.map((link) => (
       <Text
+      size={"0.8rem"}
       >
-       <div style={{display:"flex"}}>{link.link}:<Text fz="xs">{link.label}</Text></div> 
+       <div style={{display:"flex"}}>{link.link }{link.label}</div> 
       </Text>
     ));
 

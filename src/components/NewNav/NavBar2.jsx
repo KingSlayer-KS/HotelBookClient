@@ -9,10 +9,12 @@ import {
   Drawer,
   rem,
 } from "@mantine/core";
+import UserMenu from "./UserMenu"
 import logo from "../../pages/Assets/Logo.jpg";
 import { useDisclosure } from "@mantine/hooks";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../../Context/AuthContext";
+import {useContext} from "react"
 const useStyles = createStyles((theme) => ({
   link: {
     display: "flex",
@@ -84,6 +86,8 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function HeaderMegaMenu() {
+  const { user } = useContext(AuthContext);
+  // const  user  = true;
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const { classes, theme } = useStyles();
@@ -113,9 +117,10 @@ export function HeaderMegaMenu() {
             </Link>
           </Group>
           <Group className={classes.hiddenMobile}>
-            <Link to="login">
-              <Button variant="outline">Log in</Button>
-            </Link>
+          {user? <UserMenu/>:<Link to="login">
+            <Button variant="default">Log in</Button>
+          </Link>}
+        
           </Group>
 
           <Burger
@@ -155,9 +160,11 @@ export function HeaderMegaMenu() {
           color= "gray.1"
         />
         <Group position="center" grow pb="xl" px="md">
-          <Link to="login">
+        {user? <UserMenu/>:<Link to="login">
             <Button variant="default">Log in</Button>
-          </Link>
+          </Link>}
+        
+
         </Group>
       </Drawer>
     </Box>
