@@ -51,8 +51,8 @@ function App() {
         <Route path="/userDashboard" element={<ProtectedRoute><UserDashboard/></ProtectedRoute>}/>
         <Route path="/userDashboard/booking/:id" element={<ProtectedRoute><ViewTable/></ProtectedRoute>}/>
         <Route path="/userDashboard/update/:id" element={<ProtectedRoute><EditUserData/></ProtectedRoute>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/register" element={<Register/>}/>
+        <Route path="/login" element={user?<Home/>:<Login/>}/>
+        <Route path="/register" element={user?<Home/>:<Register/>}/>
         <Route path="/forgotPassword" element={<ForgotPass/>}/>
       </Routes>
      <Footer/>
