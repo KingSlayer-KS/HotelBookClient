@@ -114,24 +114,24 @@ const Links = [
     title: "Links",
     links: [
       {
-        link: <IconMapPin size="3.5rem" />,
+        link: <IconMapPin size="1rem" />,
         label: "C916, 3rd floor sector-7 Dwarka Near Ramphal chowk, New Delhi-110075(Office close shifted in mumbai)",
       },
       {
-        link: <IconMapPin size="3.5rem" />,
-        label: "New Office : Shop No 64, level 2 floor, Dewan Center S. V AXIS BANK road, Jogeshwar west mumbai maharashtra 400102",
+        link: <IconMapPin size="1rem" />,
+        label: "Shop No 64, level 2 floor, Dewan Center S. V AXIS BANK road, Jogeshwar west mumbai maharashtra 400102",
       },
       {
-        link: <IconPhone size="1rem" />,
-        label: "1800 419 9637",
-      },
-      {
-        link: <IconBrandGmail size="3.5rem" />,
+        link: <IconBrandGmail size="1rem" />,
         label: "info@indventureholidays.in",
       },
       {
-        link: <IconBrandGmail size="3.5rem" />,
+        link: <IconBrandGmail size="1rem" />,
         label: "reservation@indventureholidays.in",
+      },
+      {
+        link: <IconPhone size="1rem" />,
+        label: "+91 1800 419 9637",
       },
     ],
   },
@@ -186,9 +186,8 @@ function FooterLinks() {
   const groupsi = Links?.map((group) => {
     const links = group.links.map((link) => (
       <Text
-      size={"0.8rem"}
       >
-       <div style={{display:"flex"}}>{link.link }{link.label}</div> 
+       <div style={{display:"flex",alignItems: 'baseline',flexWrap: 'wrap'}}>{link.link}<Text fz="xs">{link.label}</Text></div> 
       </Text>
     ));
 
@@ -214,18 +213,12 @@ function FooterLinks() {
 
       <Container className={classes.afterFooter}>
       <Text color="dimmed" size="sm">
-          <div style={{display:"flex"}}>Secured Payments By: <Image maw={100} mx={"0.1rem"} radius="md" src={razorpay} alt="Razorpay Logo" /></div>
+          <div style={{display:"flex"}}>Secured Payments By: <Image maw={250} mx={"0.1rem"} radius="md" src={razorpay} alt="Razorpay Logo" /></div>
         </Text>
         <Group spacing={0} className={classes.social} position="right" noWrap>
-          <ActionIcon size="lg">
-            <IconBrandTwitter size="1.05rem" stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandYoutube size="1.05rem" stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandInstagram size="1.05rem" stroke={1.5} />
-          </ActionIcon>
+        <Text color="dimmed" size="sm">
+         All Rights Reserved ©️ Indventure Holidays
+        </Text>
         </Group>
       </Container>
     </footer>

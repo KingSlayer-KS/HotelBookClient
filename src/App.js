@@ -26,38 +26,37 @@ import Footer from "../src/components/footer/Footer";
 import ViewTable from "./pages/UserDashboard/Table/ViewTable";
 
 function App() {
-
-  const ProtectedRoute = ({children}) => {
-    const {user} = useContext(AuthContext);
-    if(!user){
+  const ProtectedRoute = ({ children }) => {
+    const { user } = useContext(AuthContext);
+    if (!user) {
       return <Navigate to="/login" />;
     }
-    return children
-  }
-
- 
-
+    return children;
+  };
+  const { user } = useContext(AuthContext);
   return (
     <BrowserRouter>
-      <NavBar/>
+      <NavBar />
       <Routes>
-      
-        <Route path="/" element={<Home/>}/>
-        <Route path="/WhyUs" element={<WhyUsPage/>}/>
-        <Route path="/AboutUs" element={<AboutUs/>}/>
-        <Route path="/Intro" element={<Intro/>}/>
-        <Route path="/hotels/:SortBy/:Region" element={<List/>}/>
-        <Route path="/hotels/:id" element={<Hotel/>}/>
-        <Route path="/userDashboard" element={<ProtectedRoute><UserDashboard/></ProtectedRoute>}/>
-        <Route path="/userDashboard/booking/:id" element={<ProtectedRoute><ViewTable/></ProtectedRoute>}/>
-        <Route path="/userDashboard/update/:id" element={<ProtectedRoute><EditUserData/></ProtectedRoute>}/>
-        <Route path="/login" element={user?<Home/>:<Login/>}/>
-        <Route path="/register" element={user?<Home/>:<Register/>}/>
-        <Route path="/forgotPassword" element={<ForgotPass/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/WhyUs" element={<WhyUsPage />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/Intro" element={<Intro />} />
+        <Route path="/hotels/:SortBy/:Region" element={<List />} />
+        <Route path="/hotels/:id" element={<Hotel />} />
+        
+        <Route path="/userDashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
+        <Route path="/userDashboard/booking/:id" element={<ProtectedRoute><ViewTable /></ProtectedRoute>} />
+        <Route path="/userDashboard/update/:id" element={<ProtectedRoute><EditUserData /></ProtectedRoute>} />
+
+        <Route path="/login" element={user?<Home/>:<Login />} />
+        <Route path="/register" element={user?<Home/>:<Register />} />
+        <Route path="/forgotPassword" element={<ForgotPass />} />
       </Routes>
-     <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }
 
 export default App;
+

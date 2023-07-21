@@ -8,6 +8,8 @@ import {
 } from "@mantine/core";
 import HeaderImg from "./HeaderImg.jpg";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -86,12 +88,13 @@ const useStyles = createStyles((theme) => ({
 
 export default function HeroImageRight() {
   const { classes } = useStyles();
+  const { user } = useContext(AuthContext);
   return (
     <div className={classes.root}>
       <Container size="lg">
         <div className={classes.inner}>
           <div className={classes.content}>
-            <Title className={classes.title}>Want to Travel the World?</Title>
+            {user?<Title className={classes.title}>Welcome, <Text c="teal.4">{user.Name}</Text></Title>:<><Title className={classes.title}>Want to Travel the World?</Title>
 
             <Title className={classes.description} mt={30}>
               <Text
@@ -102,9 +105,19 @@ export default function HeroImageRight() {
               >
                 Become A member
               </Text>
-            </Title>
-
-            <Link to="/register">
+            </Title></>
+}
+            {user?<Link to="/userDashboard">
+              <Button
+                variant="default"
+                size="xl"
+                className={classes.control}
+                mt={40}
+              >
+                Dashboard
+              </Button>
+            </Link>
+            :<Link to="/register">
               <Button
                 variant="default"
                 size="xl"
@@ -113,7 +126,7 @@ export default function HeroImageRight() {
               >
                 Register
               </Button>
-            </Link>
+            </Link>}
           </div>
         </div>
       </Container>
