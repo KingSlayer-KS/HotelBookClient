@@ -1,4 +1,5 @@
 import React from "react"
+import { Container } from '@mantine/core';
 
 
 const About = (props) => {
@@ -7,6 +8,7 @@ const About = (props) => {
 
   return (
     <>
+    <Container>
       <section className='about topMarign'>
         {props.data[0].id === 2 && <div  className='container flex reversed' >
           {props.data.map((value) => {
@@ -58,6 +60,7 @@ const About = (props) => {
           })}
         </div>}
       </section>
+      </Container>
     </>
   )
 }

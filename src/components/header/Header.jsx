@@ -1,46 +1,122 @@
-import "./header.css";
-import { AuthContext } from "../../Context/AuthContext";
-import { useContext } from "react";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { useNavigate } from "react-router-dom";
+import {
+  createStyles,
+  Container,
+  Title,
+  Button,
+  Text,
+  rem,
+} from "@mantine/core";
+import HeaderImg from "./HeaderImg.jpg";
+import { Link } from "react-router-dom";
 
-const Header = ({ type }) => {
-  const { user,dispatch } = useContext(AuthContext);
+const useStyles = createStyles((theme) => ({
+  root: {
+    backgroundColor: "#11284b",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundImage: `linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%), url(${HeaderImg})`,
+    paddingTop: `calc(${theme.spacing.xl} * 3)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 3)`,
+  },
 
-  const navigate = useNavigate();
+  inner: {
+    display: "flex",
+    justifyContent: "space-between",
 
-  const HandleClick = (route)=>{
-    navigate(`${route}`);
-  }
+    [theme.fn.smallerThan("md")]: {
+      flexDirection: "column",
+    },
+  },
+
+  image: {
+    [theme.fn.smallerThan("md")]: {
+      display: "none",
+    },
+  },
+
+  content: {
+    paddingTop: `calc(${theme.spacing.xl} * 2)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
+    marginRight: `calc(${theme.spacing.xl} * 3)`,
+
+    [theme.fn.smallerThan("md")]: {
+      marginRight: 0,
+    },
+  },
+
+  title: {
+    color: theme.white,
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontWeight: 900,
+    lineHeight: 1.05,
+    maxWidth: rem(500),
+    fontSize: rem(48),
+
+    [theme.fn.smallerThan("md")]: {
+      maxWidth: "100%",
+      fontSize: rem(34),
+      lineHeight: 1.15,
+    },
+  },
+
+  description: {
+    color: theme.white,
+    opacity: 0.75,
+    maxWidth: rem(500),
+
+    [theme.fn.smallerThan("md")]: {
+      maxWidth: "100%",
+    },
+  },
+
+  control: {
+    paddingLeft: rem(50),
+    paddingRight: rem(50),
+    color: "white",
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontSize: rem(22),
+    "&:hover": {
+      color: "black",
+    },
+    [theme.fn.smallerThan("md")]: {
+      width: "100%",
+    },
+  },
+}));
+
+export default function HeroImageRight() {
+  const { classes } = useStyles();
   return (
-    <div className="header">
-      <div 
-        className={
-          type === "list" ? "headerContainer listMode" : "headerContainer"
-        }
-      >
-        {type !== "list" && (
-          <>
-          {
-            user? <h1 className="headerTitle">Welcome {user.Name}</h1>:
-            <div>
-            <h1 className="headerTitle">
-             Want to Travel the world?<br></br>
-            </h1>
-            <h1 style={{color:"white"}}>Be our <a >Member.</a></h1>
-            <button className="navButton" style={{backgroundColor:"transparent",border:"0.5px solid white",color:"white", padding:"5px",borderRadius:"5px",margin:"10px 0"}} onClick={()=>HandleClick("register")}>Register</button>
-            </div>
-          }
-         
-           
-            
-        
-          </>
-        )}
-      </div>
+    <div className={classes.root}>
+      <Container size="lg">
+        <div className={classes.inner}>
+          <div className={classes.content}>
+            <Title className={classes.title}>Want to Travel the World?</Title>
+
+            <Title className={classes.description} mt={30}>
+              <Text
+                component="span"
+                inherit
+                variant="gradient"
+                gradient={{ from: "#EE2B77", to: "#64CAE1" }}
+              >
+                Become A member
+              </Text>
+            </Title>
+
+            <Link to="/register">
+              <Button
+                variant="default"
+                size="xl"
+                className={classes.control}
+                mt={40}
+              >
+                Register
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Container>
     </div>
   );
-};
-
-export default Header;
+}

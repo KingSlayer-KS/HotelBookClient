@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
-import "./searchItem.css";
-
-
+import React from 'react';
+import BadgeCard from './Searchitem1';
 
 const SearchItem = (props) => {
   console.log(props.data);
@@ -9,33 +7,17 @@ const SearchItem = (props) => {
   const fileName = path;
   console.log(fileName);
   return (
-    <div className="searchItem">
-      <img
-        src={`${fileName}`}
-        alt=""
-        className="siImg"
-      />
-      <div className="siDesc">
-        <h1 className="siTitle">{props.data.Name}</h1>
-        <span className="siTaxiOp">{props.data.Amenties}</span>
-        <span className="siSubtitle">
-        {props.data.Description}
-        <br></br>
-       <h1> {props.data.ResortType}</h1>
-        </span>
-        <span className="siFeatures">
-          Entire studio • 1 bathroom • 21m² 1 full bed
-        </span>
-      </div>
-      <div className="siDetails">
-        <div className="siDetailTexts">
-         
-          <Link to={`/hotels/${props.data.id}`}>
-          <button className="siCheckButton" >Book Now</button>
-          </Link>
-        </div>
-      </div>
-    </div>
+    <div className="grid-container">
+    <BadgeCard
+      image={props.data.URLPath}
+      title={props.data.Name}
+      description={props.data.Description}
+      amenities={props.data.Amenties}
+      id={props.data.id}
+      location={`${props.data.City}, ${props.data.State}`}
+      type={props.data.Type}
+    />
+     </div>
   );
 };
 

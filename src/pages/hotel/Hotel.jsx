@@ -1,5 +1,5 @@
 import "./hotel.css";
-import Header from "../../components/header/Header";
+import Demo from "./Carusel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleArrowLeft,
@@ -15,10 +15,7 @@ import { useNavigate } from "react-router-dom";
 import Reserve from "../../components/reserve/reserve";
 import axios from "axios";
 
-
-
 const Hotel = () => {
-  
   const location = useLocation();
   const pathname = location.pathname;
   const pathsplit = pathname.split("/");
@@ -29,37 +26,38 @@ const Hotel = () => {
 
   // User
 
-  const {user} = useContext(AuthContext);
-  
-  const {data, loading,error,refetchData} = useFetch(`http://54.234.178.57:8800/api/hotels/${hotelId}`);
-console.log(data);
-const [fileName, setFileName] = useState("");
-const [fileName2, setFileName2] = useState("");
-const [fileName3, setFileName3] = useState("");
-const [fileName4, setFileName4] = useState("");
+  const { user } = useContext(AuthContext);
 
-//Lead, Joined rendering
-const [LeadType, setLeadType] = useState("");
-  
-useEffect(()=>{
-  if(data.length!= 0){
-     setFileName(data[0].URLPath);
-     setFileName2(data[0].URLPath2);
-     setFileName3(data[0].URLPath3);
-     setFileName4(data[0].URLPath4);
-  }
-},[data.length])
+  const { data, loading, error, refetchData } = useFetch(
+    `http://54.234.178.57:8800/api/hotels/${hotelId}`
+  );
+  console.log(data);
+  const [fileName, setFileName] = useState("");
+  const [fileName2, setFileName2] = useState("");
+  const [fileName3, setFileName3] = useState("");
+  const [fileName4, setFileName4] = useState("");
 
-useEffect(()=>{
-if(user){
-  setLeadType(user.LeadType);
-}
-},[user])
+  //Lead, Joined rendering
+  const [LeadType, setLeadType] = useState("");
 
+  useEffect(() => {
+    if (data.length != 0) {
+      setFileName(data[0].URLPath);
+      setFileName2(data[0].URLPath2);
+      setFileName3(data[0].URLPath3);
+      setFileName4(data[0].URLPath4);
+    }
+  }, [data.length]);
 
-  useEffect(()=>{
+  useEffect(() => {
+    if (user) {
+      setLeadType(user.LeadType);
+    }
+  }, [user]);
+
+  useEffect(() => {
     refetchData();
-  },[]);
+  }, []);
   const photos = [
     {
       src: `${fileName}`,
@@ -72,7 +70,7 @@ if(user){
     },
     {
       src: `${fileName4}`,
-    }
+    },
   ];
 
   const handleOpen = (i) => {
@@ -89,105 +87,99 @@ if(user){
       newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
     }
 
-    setSlideNumber(newSlideNumber)
+    setSlideNumber(newSlideNumber);
   };
- 
-  
- 
-  
+
   const navigate = useNavigate();
-  const handleClick = ()=>{
-   if(user){
-    setOpenModal(true);
-   }else{
-    navigate("/login");
-   }
-  }
+  const handleClick = () => {
+    if (user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <div>
- 
-      {
-        data.length == 0 ?( "Loading" ):(
-          <div className="hotelContainer">
-        {open && (
-          <div className="slider">
-            <FontAwesomeIcon
-              icon={faCircleXmark}
-              className="close"
-              onClick={() => setOpen(false)}
-            />
-            <FontAwesomeIcon
-              icon={faCircleArrowLeft}
-              className="arrow"
-              onClick={() => handleMove("l")}
-            />
-            <div className="sliderWrapper">
-              <img src={photos[slideNumber].src} alt="" className="sliderImg" />
-            </div>
-            <FontAwesomeIcon
-              icon={faCircleArrowRight}
-              className="arrow"
-              onClick={() => handleMove("r")}
-            />
-          </div>
-        )}
-        <div className="hotelWrapper">
-          <div className="HotelHeaderWraper">
-          
-       <div>
-       <h1 className="hotelTitle">{data[0].Name}</h1>
-       </div>
-    
-          <div className="hotelAddress">
-            <FontAwesomeIcon icon={faLocationDot} />
-            <span>{data[0].City},{data[0].State}</span>
-          </div>
-          <div>
-          
-        
-          {LeadType == 'Lead'?<p>Become member to book hotel, Contact us now!</p>:
-          <button onClick={handleClick} className="bookNow">Reserve or Book Now!</button>
-          }
-         
-          </div>
-          </div>
-   
-        
-          <div className="hotelImages">
-            {photos.map((photo, i) => (
-              <div className="hotelImgWrapper" key={i}>
+      {data.length == 0 ? (
+        "Loading"
+      ) : (
+        <div className="hotelContainer">
+          {open && (
+            <div className="slider">
+              <FontAwesomeIcon
+                icon={faCircleXmark}
+                className="close"
+                onClick={() => setOpen(false)}
+              />
+              <FontAwesomeIcon
+                icon={faCircleArrowLeft}
+                className="arrow"
+                onClick={() => handleMove("l")}
+              />
+              <div className="sliderWrapper">
                 <img
-                  onClick={() => handleOpen(i)}
-                  src={photo.src}
+                  src={photos[slideNumber].src}
                   alt=""
-                  className="hotelImg"
+                  className="sliderImg"
                 />
               </div>
-            ))}
-          </div>
-          <div className="hotelDetails">
-            <div className="hotelDetailsTexts">
-              <h1 className="hotelTitle">Description</h1>
-              <p className="hotelDesc">
-              {data[0].Description}
-              </p>
-              
+              <FontAwesomeIcon
+                icon={faCircleArrowRight}
+                className="arrow"
+                onClick={() => handleMove("r")}
+              />
             </div>
-            <div className="hotelDetailsTexts">
-            <h2 className="hotelTitle">Highlights</h2>
-              <p className="hotelDesc">
-              {data[0].Amenties}
-              </p>
-              
+          )}
+          <div className="hotelWrapper">
+            <Demo
+              file={photos}
+            />
+
+
+            <div className="HotelHeaderWraper">
+              <div>
+                <h1 className="hotelTitle">{data[0].Name}</h1>
+              </div>
+
+              <div className="hotelAddress">
+                <FontAwesomeIcon icon={faLocationDot} />
+                <span>
+                  {data[0].City},{data[0].State}
+                </span>
+              </div>
+              <div>
+                {LeadType == "Lead" ? (
+                  <p>Become member to book hotel, Contact us now!</p>
+                ) : (
+                  <button onClick={handleClick} className="bookNow">
+                    Reserve or Book Now!
+                  </button>
+                )}
+              </div>
             </div>
-            
+            <div className="hotelDetails">
+              <div className="hotelDetailsTexts">
+                <h1 className="hotelTitle">Description</h1>
+                <p className="hotelDesc">{data[0].Description}</p>
+              </div>
+              <div className="hotelDetailsTexts">
+                <h2 className="hotelTitle">Highlights</h2>
+                <p className="hotelDesc">{data[0].Amenties}</p>
+              </div>
+            </div>
+            <div className="hotelDetails">
+              <div className="hotelDetailsTexts">
+                <h2 className="hotelTitle">Contact</h2>
+                <p className="hotelDesc">Email: <a href={`mailto:${data[0].Email}`}>{data[0].Email}</a></p>
+                <p className="hotelDesc">Number: <a>{data[0].MobNo}</a></p>
+              </div>
+            </div>
           </div>
         </div>
-
-      </div>
-        )
-      }
-     {openModal && <Reserve setOpen={setOpenModal} hotelId={hotelId} data = {data}/> }
+      )}
+      {openModal && (
+        <Reserve setOpen={setOpenModal} hotelId={hotelId} data={data} />
+      )}
     </div>
   );
 };

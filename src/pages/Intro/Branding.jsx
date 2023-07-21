@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import { Container } from "@mantine/core";
 
 const Branding = () => {
   const data = [
@@ -22,28 +23,31 @@ const Branding = () => {
       heading: "Customer Centricity",
       desc: "Putting the needs of clients first and striving to continuously provide an outstanding level of service... herefore the best way to ensure high standard, safety, value for money and service level is to choose HOLIDAYS as business partner.",
     },
-  ]
+  ];
   return (
     <>
-      <section className='Branding'>
-        <div className='container grid'>
-          {data.map((value) => {
-            return (
-              <div className='box flex'>
-                <div className='text'>
-                  <h1>{value.id}</h1>
+      <section className="Branding">
+        <Container>
+          {" "}
+          <div className="container grid">
+            {data.map((value) => {
+              return (
+                <div className="box flex">
+                  <div  className="text">
+                    <h1 >{value.id}</h1>
+                  </div>
+                  <div className="para">
+                    <h2 style={{color:"white"}}>{value.heading}</h2>
+                    <p>{value.desc}</p>
+                  </div>
                 </div>
-                <div className='para'>
-                  <h2>{value.heading}</h2>
-                  <p>{value.desc}</p>
-                </div>
-              </div>
-            )
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </Container>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Branding
+export default Branding;

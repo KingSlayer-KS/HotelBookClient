@@ -118,3 +118,19 @@
     flex-direction: column;
   }
 }
+
+/* SearchItem.css */
+
+/* PC layout: 3x3 grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+  gap: 20px; /* Gap between grid items */
+}
+
+/* Mobile layout: 2x2 grid */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+  }
+}
